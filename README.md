@@ -20,5 +20,4 @@ Backend
 
 Node.js
 Express
-UUID (for generating unique post IDs)
 CORS
