@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllPosts, deletePost } from "../api/posts.js";
+import axios from "axios";
 
 
 export default  function PostList() {
@@ -9,7 +10,9 @@ export default  function PostList() {
   useEffect(() => {
     getAllPosts().then((data)=>{
       setPosts(data);
-    });
+      }).catch((err)=>{
+        console.log(err);
+      });
   }, []);
 
   const handleDelete = async (id) => {

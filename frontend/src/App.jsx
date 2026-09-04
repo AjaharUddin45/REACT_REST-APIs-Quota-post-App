@@ -3,6 +3,10 @@ import PostList from "./components/PostList.jsx";
 import NewPost from "./components/NewPost.jsx";
 import ShowPost from "./components/ShowPost.jsx";
 import EditPost from "./components/EditPost.jsx";
+import axios from "axios";
+
+axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.withCredentials = true;
 
 
 function App() {
@@ -18,4 +22,3 @@ function App() {
 }
 
 export default App;
-// dev

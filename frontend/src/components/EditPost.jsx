@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getPost, updatePost } from "../api/posts.js";
+import { getPost } from "../api/posts.js";
+import axios from "axios";
 
 
  export default function EditPost() {
@@ -18,8 +19,16 @@ import { getPost, updatePost } from "../api/posts.js";
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await updatePost(id, content);
-    navigate("/posts");
+    try{
+      const res = await axios.patch(`/posts/${id}`,{
+        content:content,
+      });
+     // console.log(res.data);
+       navigate("/posts");
+    }catch(err){
+        console.log(err);
+    }
+   
   };
 
   if (!post) return <p>Loading...</p>;
