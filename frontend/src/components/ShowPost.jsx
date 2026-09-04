@@ -10,6 +10,8 @@ import { getPost } from "../api/posts.js";
   useEffect(() => {
     getPost(id).then((data)=>{
       setPost(data);
+    }).catch((err)=>{
+      console.log(err);
     });
   }, [id]);
 

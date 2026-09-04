@@ -4,7 +4,10 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const Post = require("./models/post.js");
 
-app.use(cors());
+app.use(cors({
+  origin:"http://localhost:5173",
+  credentials:true,
+}));
 app.use(express.json());
 
 main().then(()=>{
@@ -49,6 +52,7 @@ app.get("/posts/:id", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
 
 app.post("/posts",async (req,res)=>{
     try{

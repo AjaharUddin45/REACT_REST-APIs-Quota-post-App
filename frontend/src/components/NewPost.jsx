@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createPost } from "../api/posts.js";
+// import { createPost } from "../api/posts.js";
+import axios from "axios";
 
 export default function NewPost() {
   const [username, setUsername] = useState("");
@@ -9,8 +10,19 @@ export default function NewPost() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await createPost({username, content});
-    navigate("/posts");
+    // await createPost({username, content});
+
+    try{
+      const res = await axios.post("/posts",{
+        username,
+        content,
+      });
+      console.log(res);
+      navigate("/posts");
+    }catch(err){
+        console.log(err);
+    }
+    
   };
 
   return (
